@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  app-sample-2:
+  app-sample:
     image: nginx:latest
     container_name: app-sample-2
     networks:
