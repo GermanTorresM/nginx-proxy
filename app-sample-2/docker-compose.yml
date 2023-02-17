@@ -1,17 +1,17 @@
 version: '3.8'
 
 services:
-  app-sample:
+  app-sample-2:
     image: nginx:latest
-    container_name: app-sample
+    container_name: app-sample-2
     networks:
-      - gtm_network
+      - curramba_network
     volumes:
       - ./nginx/:/usr/share/nginx/html:rw
       - ./conf.d/:/etc/nginx/conf.d:rw
-    ports:
-      - 8080:80
+    expose:
+      - "80"
 
 networks:
-  gtm_network:
+  curramba_network:
     external: true
