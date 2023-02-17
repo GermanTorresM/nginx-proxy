@@ -4,8 +4,14 @@ services:
   app-sample:
     image: nginx:latest
     container_name: app-sample
+    networks:
+      - gtm_network
     volumes:
       - ./nginx/:/usr/share/nginx/html:rw
       - ./conf.d/:/etc/nginx/conf.d:rw
     ports:
       - 8080:80
+
+networks:
+  gtm_network:
+    external: true
