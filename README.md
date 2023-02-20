@@ -39,25 +39,25 @@ docker-compose up -d
 ```
 Repeat for each application sample needed in your project.
 
-4. Edit nginx.conf and replace the string ${SERVER_NAME} with Docker host machine's hostname. You can find it from the command line by executing the command "hostname" or localhost.
+4. Edit `nginx.conf` and replace the string `${SERVER_NAME}` with Docker host machine's hostname. You can find it from the command line by executing the command "hostname" or localhost.
 
 Before
-````
+```
 server {
 			
 			listen 443 ssl;
     		# Replace ${SERVER_NAME} with name obtained from console command output: "hostname"
 			#server_name ${SERVER_NAME}; 
-````
+```
 
 After
-````
+```
 server {
 			
 			listen 443 ssl;
     		# Replace ${SERVER_NAME} with name obtained from console command output: "hostname"
 			server_name user-pc
-````
+```
 
 5. Generate certificates: It is needed top generate ssl certificates using script `generate-certificate.sh`
 ```
@@ -73,7 +73,7 @@ export COMMONNAME="localhost"
 
 6. Start the Nginx Proxy:
 ```
-cd ..
+cd ../reverse-proxy
 docker-compose up -d
 ```
 
