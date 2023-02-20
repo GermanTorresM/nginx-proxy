@@ -27,14 +27,19 @@ git clone https://github.com/GermanTorresM/nginx-proxy.git
 cd nginx-proxy
 ```
 
-2. Start each of the application sample first:
+2. Create network
+```
+docker network create curramba-network
+```
+
+3. Start each of the application sample first:
 ```
 cd app-sample-1
 docker-compose up -d
 ```
 Repeat for each application sample needed in your project.
 
-3. Edit nginx.conf and replace the string ${SERVER_NAME} with Docker host machine's hostname. You can find it from the command line by executing the command "hostname" or localhost.
+4. Edit nginx.conf and replace the string ${SERVER_NAME} with Docker host machine's hostname. You can find it from the command line by executing the command "hostname" or localhost.
 
 Before
 ````
@@ -54,7 +59,7 @@ server {
 			server_name user-pc
 ````
 
-4. Generate certificates: It is needed top generate ssl certificates using script `generate-certificate.sh`
+5. Generate certificates: It is needed top generate ssl certificates using script `generate-certificate.sh`
 ```
 sh generate-certificates.sh
 ```
@@ -66,13 +71,13 @@ export IP="172.22.11.203"
 export COMMONNAME="localhost"
 ```
 
-5. Start the Nginx Proxy:
+6. Start the Nginx Proxy:
 ```
 cd ..
 docker-compose up -d
 ```
 
-6. Add the domains to your /etc/hosts file:
+7. Add the domains to your /etc/hosts file:
 ```
 echo "192.168.86.100 app-sample-1" >> /etc/hosts
 echo "192.168.86.100 app-sample-2" >> /etc/hosts
